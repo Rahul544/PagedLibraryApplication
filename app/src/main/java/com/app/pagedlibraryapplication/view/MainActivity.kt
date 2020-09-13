@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val storyAdapter = StoryAdapter()
+
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val storyViewModel = ViewModelProvider(this).get(StoryViewModel::class.java)
