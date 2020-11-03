@@ -1,11 +1,10 @@
 package com.app.pagedlibraryapplication.service
 
+import com.app.pagedlibraryapplication.model.response.LoginResponse
 import com.app.pagedlibraryapplication.model.response.UserStoryResponse
+import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
     @GET("story_posts")
@@ -13,4 +12,8 @@ interface ApiService {
                      @Header("X-User-Token")  token_header: String,
                      @Query("dummypost") dummypost: Int,
                      @Query("page") page: Int): Call<UserStoryResponse>
+
+
+    @POST("signin_api")
+    fun login(@Body loginBody: JSONObject) : Call<LoginResponse>
 }

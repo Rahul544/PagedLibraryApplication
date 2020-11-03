@@ -10,8 +10,6 @@ import com.app.pagedlibraryapplication.source.StoryDataSource
 
 class StoryDataSourceFactory : DataSource.Factory<Int,Post>() {
     //creating the mutable live data
-
-
     val storyLiveDataSource = MutableLiveData<StoryDataSource>()
 
     override fun create(): DataSource<Int, Post> {

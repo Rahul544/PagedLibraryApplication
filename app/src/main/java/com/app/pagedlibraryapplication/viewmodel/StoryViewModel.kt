@@ -1,12 +1,14 @@
 package com.app.pagedlibraryapplication.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.app.pagedlibraryapplication.factory.StoryDataSourceFactory
 import com.app.pagedlibraryapplication.model.common.Post
+import com.app.pagedlibraryapplication.model.response.LoginResponse
 import com.app.pagedlibraryapplication.source.StoryDataSource
 import com.app.pagedlibraryapplication.utills.NetworkState
 
@@ -17,6 +19,9 @@ class StoryViewModel : ViewModel() {
     var networkState: LiveData<NetworkState>
     var storyPagedList: LiveData<PagedList<Post>>
     var liveDataSource: LiveData<StoryDataSource>
+
+    //Testing purpose
+//    var loginResponse :  LiveData<LoginResponse>
 
 
     init {

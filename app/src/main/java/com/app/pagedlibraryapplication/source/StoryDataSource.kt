@@ -35,7 +35,7 @@ class StoryDataSource : PageKeyedDataSource<Int,Post>() {
 
         call.enqueue(object : Callback<UserStoryResponse> {
             override fun onFailure(call: Call<UserStoryResponse>, t: Throwable) {
-                networkState.postValue(NetworkState.error(t.message ?: "unknown err"))
+                networkState.postValue(NetworkState.error(t.message ?: "Something went wrong!!",t.hashCode()))
             }
 
             override fun onResponse(
@@ -57,8 +57,8 @@ class StoryDataSource : PageKeyedDataSource<Int,Post>() {
                         callback.onResult(userStoryPost,null, FIRST_PAGE + 1)
                     }
                 }else{
-                    networkState.postValue(NetworkState.error("error code: ${response.code()}"))
-                    initialLoad.postValue(NetworkState.error("error code: ${response.code()}"))
+                    networkState.postValue(NetworkState.error(response.errorBody().toString(),response.code()))
+                    initialLoad.postValue(NetworkState.error(response.errorBody().toString(),response.code()))
                 }
             }
         })
@@ -69,7 +69,7 @@ class StoryDataSource : PageKeyedDataSource<Int,Post>() {
         val call = service.getStoryPost("rahul+test1@poplify.com","bazRp8sc4zS2vjobEmmE",1, params.key)
         call.enqueue(object : Callback<UserStoryResponse> {
             override fun onFailure(call: Call<UserStoryResponse>, t: Throwable) {
-                networkState.postValue(NetworkState.error(t.message ?: "unknown err"))
+                networkState.postValue(NetworkState.error(t.message ?: "unknown err",t.hashCode()))
             }
 
             override fun onResponse(
@@ -91,8 +91,7 @@ class StoryDataSource : PageKeyedDataSource<Int,Post>() {
                         callback.onResult(userStoryPost, key)
                     }
                 }else{
-                    networkState.postValue(
-                        NetworkState.error("error code: ${response.code()}"))
+                    networkState.postValue(NetworkState.error(response.errorBody().toString(),response.code()))
                 }
 
             }

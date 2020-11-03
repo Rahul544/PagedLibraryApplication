@@ -12,7 +12,7 @@ import com.app.pagedlibraryapplication.model.common.Post
 import com.app.pagedlibraryapplication.utills.NetworkState
 import com.app.pagedlibraryapplication.viewholders.NetworkStateItemViewHolder
 import com.app.pagedlibraryapplication.viewholders.StoryViewHolder
-import kotlinx.android.synthetic.main.story_list_item.view.*
+
 
 class StoryAdapter : PagedListAdapter<Post,RecyclerView.ViewHolder>(POST_COMPARATOR) {
 
